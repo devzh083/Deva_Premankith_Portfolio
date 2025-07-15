@@ -3,64 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deva Premankith Maddela - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Deva Premankith Maddela - Precision Protocol</title>
+    <!-- Google Fonts: Inter for clean, modern typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Three.js CDN for 3D animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Phosphor Icons for sleek navigation icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/dist/phosphor.js"></script>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your separate CSS file -->
 </head>
 <body>
-    <header class="header-main">
-        <div class="header-content">
-            <a href="#" class="logo">Deva Premankith</a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+    <!-- Left Sidebar Navigation -->
+    <aside class="sidebar-nav">
+        <div class="sidebar-profile-pic-container">
+            <div class="sidebar-profile-pic"></div>
         </div>
-    </header>
+        <nav class="sidebar-menu" id="sidebar-menu">
+            <ul>
+                <li><a href="#about" data-tooltip="About Me"><i class="ph ph-user"></i></a></li>
+                <li><a href="#projects" data-tooltip="My Projects"><i class="ph ph-folder-open"></i></a></li>
+                <li><a href="#skills" data-tooltip="Precision Toolkit"><i class="ph ph-toolbox"></i></a></li>
+                <li><a href="#education" data-tooltip="Education"><i class="ph ph-graduation-cap"></i></a></li>
+                <li><a href="#awards" data-tooltip="Awards"><i class="ph ph-medal"></i></a></li>
+                <li><a href="#focus-2025" data-tooltip="2025 Focus"><i class="ph ph-target"></i></a></li>
+                <li><a href="#contact" data-tooltip="Connect"><i class="ph ph-envelope-simple"></i></a></li>
+            </ul>
+        </nav>
+        <!-- For desktop, logo is replaced by profile pic. For mobile, logo is shown -->
+        <a href="#" class="sidebar-logo" style="display: none;">Deva Premankith</a> 
+    </aside>
 
-    <main>
-        <section id="hero" class="hero-section">
-            <div class="hero-text-content">
-                <h1>Deva Premankith Maddela.</h1>
-                <h2>AI-Powered Backend Developer & Security Technologist.</h2>
-                <p>Automating workflows, building secure systems, and deploying intelligent applications using Python, Flask, LangChain, and SIEM tools.</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Projects</a>
-                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+    <!-- Profile Picture (Top Right) - This is hidden on mobile, shown in sidebar on mobile -->
+    <div class="profile-pic-container">
+        <div class="profile-pic"></div>
+    </div>
+
+    <!-- Three.js Canvas Container - Fixed Background for Main Content -->
+    <div id="hero-threejs-container"></div>
+
+    <!-- Main Content Area -->
+    <div class="main-content-area">
+        <main>
+            <!-- Hero Section -->
+            <section id="hero" class="hero-section">
+                <div class="container">
+                    <div class="seeking-opportunities-badge">
+                        <span class="dot"></span> Seeking opportunities
+                    </div>
+                    <h1>Hello! I'm Deva Premankith.<span>AI-Powered Backend & Security Technologist.</span></h1>
+                    <p>I craft secure, intelligent systems and automate complex workflows with meticulous attention to detail. My passion lies in leveraging AI to build robust solutions that drive real-world impact.</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View My Projects</a>
+                        <a href="mailto:devapremz871315@gmail.com" class="btn btn-secondary">Copy email</a>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="about" class="section about-me-section">
-            <div class="section-content">
-                <h2>About Me</h2>
-                <p>I'm Deva Premankith Maddela, an enthusiastic AI-Powered Backend Developer and Security-Focused Technologist, having completed my B.Tech in Computer Science Engineering in 2024. With over a year of hands-on experience, I specialize in automating workflows, building robust secure systems, and deploying intelligent applications using Python, Flask, LangChain, and SIEM tools.</p>
-                <p>As a Technical Operations Specialist at Hiewa Stays, I successfully automated over 80% of operational workflows and enhanced web conversions by 30% through strategic SEO and ad campaigns. My work involved securely managing over 2,000 digital records and implementing role-based access.</p>
-                <p>My projects, like the Emotion Detection System (achieving 83% accuracy using CNN and OpenCV) and the COVID X-Ray Image Classifier (with 92% accuracy), demonstrate my practical application of AI and machine learning for real-world problems and my ability to build end-to-end ML applications with interactive web interfaces.</p>
-                <p>I hold a Google Cybersecurity Professional Certificate and was recognized as a Top Performer for my automation achievements at Hiewa Stays. I am passionate about leveraging technology to create efficient and secure digital solutions that drive real-world impact.</p>
-            </div>
-        </section>
+            <!-- About Me Section -->
+            <section id="about" class="section about-me-section">
+                <div class="container section-content">
+                    <h2>About Me</h2>
+                    <p>I'm Deva Premankith Maddela, an enthusiastic AI-Powered Backend Developer and Security-Focused Technologist, having completed my B.Tech in Computer Science Engineering in 2024. With over a year of hands-on experience, I specialize in automating workflows, building robust secure systems, and deploying intelligent applications using Python, Flask, LangChain, and SIEM tools.</p>
+                    <p>As a Technical Operations Specialist at Hiewa Stays, I successfully automated over 80% of operational workflows and enhanced web conversions by 30% through strategic SEO and ad campaigns. My work involved securely managing over 2,000 digital records and implementing role-based access.</p>
+                    <p>My projects, like the Emotion Detection System (achieving 83% accuracy using CNN and OpenCV) and the COVID X-Ray Image Classifier (with 92% accuracy), demonstrate my practical application of AI and machine learning for real-world problems and my ability to build end-to-end ML applications with interactive web interfaces.</p>
+                    <p>I hold a Google Cybersecurity Professional Certificate and was recognized as a Top Performer for my automation achievements at Hiewa Stays. I am passionate about leveraging technology to create efficient and secure digital solutions that drive real-world impact.</p>
+                </div>
+            </section>
 
-        <section id="projects" class="section"><h2>My Projects</h2></section>
-        
-        <section id="skills" class="section"><h2>Skills</h2></section>
-        
-        <section id="contact" class="section"><h2>Contact</h2></section>
-    </main>
+            <!-- Projects Section -->
+            <section id="projects" class="section projects-section">
+                <div class="container section-content">
+                    <h2>My Projects</h2>
+                    <div class="projects-grid">
+                        <!-- Project 1: Emotion Detection System -->
+                        <div class="project-card">
+                            <h3>Emotion Detection System</h3>
+                            <p class="project-description">Developed a real-time facial emotion detection system using Convolutional Neural Networks (CNN) and OpenCV, achieving 83% accuracy across 6 emotion classes. Integrated the model into a Python-based pipeline with live webcam feed and optimized inference for sub-150ms response time. Designed an intuitive GUI using Flask and JavaScript for seamless user testing and deployment across diverse user devices.</p>
+                            <div class="project-tech">
+                                <span>Python</span><span>CNN</span><span>OpenCV</span><span>Flask</span><span>JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank" class="btn btn-secondary">View Demo</a>
+                                <a href="#" target="_blank" class="btn btn-secondary">GitHub Repo</a>
+                            </div>
+                        </div>
 
-    <footer class="footer-main">
-        <p>&copy; 2025 Deva Premankith Maddela. All rights reserved.</p>
-        <div class="footer-links">
-            <a href="https://linkedin.com/in/devapremankith" target="_blank">LinkedIn</a>
-            </div>
-    </footer>
+                        <!-- Project 2: COVID X-Ray Image Classifier -->
+                        <div class="project-card">
+                            <h3>COVID X-Ray Image Classifier</h3>
+                            <p class="project-description">Engineered an end-to-end Machine Learning application with a Python backend and interactive web interface for real-time image analysis with 92% accuracy. Orchestrated data processing pipeline & model integration with a RESTful API for seamless user experience and <100ms response time. Crafted a responsive dashboard using Python, OpenCV, Keras, and web technologies for production deployment serving 500+ daily users.</p>
+                            <div class="project-tech">
+                                <span>Python</span><span>OpenCV</span><span>Keras</span><span>ML</span><span>RESTful API</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank" class="btn btn-secondary">View Demo</a>
+                                <a href="#" target="_blank" class="btn btn-secondary">GitHub Repo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <script src="script.js"></script>
+            <!-- Skills Section -->
+            <section id="skills" class="section skills-section">
+                <div class="container">
+                    <h2>My Precision Toolkit</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <h3>AI & Automation</h3>
+                            <p>LangChain, OpenCV, Hugging Face, Machine Learning, Workflow Automation, Data Pipelines.</p>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Cybersecurity</h3>
+                            <p>Threat Detection, SIEM (Splunk, Defender), Risk Mitigation, Secure System Design, Access Control.</p>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Backend & Scripting</h3>
+                            <p>Python, Flask, SQL, RESTful APIs, Google Apps Script, System Integration.</p>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Web & UI Principles</h3>
+                            <p>HTML, CSS, JavaScript, Responsive Design, User Experience, Frontend Integration (Flask/JS GUIs).</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section id="education" class="section education-section">
+                <div class="container">
+                    <h2>Education & Certifications</h2>
+                    <div class="timeline">
+                        <!-- Education -->
+                        <div class="timeline-item">
+                            <div class="timeline-date">2024</div>
+                            <div class="timeline-item-content">
+                                <h3>B.Tech - Computer Science Engineering</h3>
+                                <h4>Rajiv Gandhi University of Knowledge Technologies Ongole</h4>
+                                <p>Achieved 8.11 GPA. Focused on core CSE principles, preparing for a career in AI and secure systems.</p>
+                            </div>
+                        </div>
+                        <!-- Pre University Course -->
+                        <div class="timeline-item">
+                            <div class="timeline-date">Pre-Uni</div>
+                            <div class="timeline-item-content">
+                                <h3>Pre University Course</h3>
+                                <h4>Rajiv Gandhi University of Knowledge Technologies Ongole</h4>
+                                <p>Completed with 7.2 GPA, building foundational knowledge for engineering studies.</p>
+                            </div>
+                        </div>
+                        <!-- Google Cybersecurity Professional Certificate -->
+                        <div class="timeline-item">
+                            <div class="timeline-date">2024</div>
+                            <div class="timeline-item-content">
+                                <h3>Google Cybersecurity Professional Certificate</h3>
+                                <h4>Google</h4>
+                                <p>Validated expertise in threat detection, SIEM tools, and risk mitigation, enhancing security capabilities.</p>
+                            </div>
+                        </div>
+                        <!-- Other Certificates -->
+                        <div class="timeline-item">
+                            <div class="timeline-date">Certificates</div>
+                            <div class="timeline-item-content">
+                                <h3>ChatGPT For Everyone</h3>
+                                <h4>Learn Prompting</h4>
+                                <p>Enhanced understanding of AI prompting techniques for efficient interaction with large language models.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Certificates</div>
+                            <div class="timeline-item-content">
+                                <h3>AI for Beginners</h3>
+                                <h4>HP</h4>
+                            <p>Fundamental knowledge in Artificial Intelligence concepts and applications.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Certificates</div>
+                            <div class="timeline-item-content">
+                                <h3>Fundamentals of Agents</h3>
+                                <h4>Huggingface</h4>
+                                <p>Explored principles and applications of AI agents, aligning with advanced automation interests.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Awards Section (New Separate Section) -->
+            <section id="awards" class="section awards-section">
+                <div class="container">
+                    <h2>Awards & Recognition</h2>
+                    <div class="award-card is-visible"> <!-- is-visible for immediate animation in demo -->
+                        <h3>Top Performer - Q4 2024 | Hiewa Stays</h3>
+                        <p>Awarded for automating 80% of booking and tracking workflows using Google Apps Script and Python, improving response time by 40%, and securely managing 2,000+ guest records with real-time dashboards, driving a 30% boost in digital engagement.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2025 Focus Section -->
+            <section id="focus-2025" class="section focus-2025-section">
+                <div class="container contact-content">
+                    <h2>My 2025 Focus: Advanced Protocols</h2>
+                    <p>In 2025, I am dedicated to mastering advanced cybersecurity protocols. I am currently in the process of **mastering CEH v13 (Certified Ethical Hacker)**, further solidifying my expertise in threat detection, vulnerability assessment, and ethical hacking methodologies. This commitment ensures I remain at the forefront of secure system development and defense.</p>
+                    <p>I am eager to apply this expanded knowledge to real-world challenges, contributing to robust and resilient digital infrastructures.</p>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section contact-section">
+                <div class="container contact-content">
+                    <h2>Connect with Precision</h2>
+                    <p>I'm actively seeking opportunities in India and Dubai where I can leverage my skills in AI, backend development, and cybersecurity to build impactful and secure solutions. Let's connect and discuss how I can contribute to your team's success.</p>
+                    <div class="contact-links">
+                        <a href="mailto:devapremz871315@gmail.com" class="btn btn-primary">Email Me</a>
+                        <a href="https://linkedin.com/in/devapremankith" target="_blank" class="btn btn-secondary">LinkedIn</a>
+                        <a href="tel:+9710569892157" class="btn btn-secondary">Call Me (Dubai)</a>
+                        <a href="tel:+9182774017" class="btn btn-secondary">Call Me (India)</a>
+                        <a href="https://github.com/devzh083" target="_blank" class="btn btn-secondary">GitHub</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer-main">
+            <div class="container">
+                <p>&copy; 2025 Deva Premankith Maddela. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="https://linkedin.com/in/devapremankith" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/devzh083" target="_blank">GitHub</a>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="script.js"></script> <!-- Link to your separate JS file -->
 </body>
 </html>

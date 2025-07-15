@@ -1,4 +1,29 @@
-/* Basic Reset & Global Styles */
+/* --- CSS Variables for Precision Protocol Theme (Sleek Dark Mode) --- */
+:root {
+    --sidebar-width: 80px; /* Much narrower sidebar for icon-based navigation */
+    --main-bg-dark: #1a1a1a; /* Deepest dark for overall background/animation */
+    --primary-bg: #242424; /* Slightly lighter dark for content block backgrounds */
+    --secondary-bg: #2c2c2c; /* Even lighter dark for cards/sections, subtle contrast */
+    --sidebar-bg: #0d0d0d; /* Very dark, almost black for sidebar, matching reference */
+
+    --text-lightest: #f0f0f0; /* Very light for main headings */
+    --text-light: #cccccc; /* Light for body text */
+    --text-medium: #aaaaaa; /* Medium light for secondary text */
+    --text-dark: #888888; /* Darker gray for subtle elements if needed */
+
+    --accent-color: #007ACC; /* Refined Tech-blue accent for highlights/hovers */
+    --accent-hover-color: #0066B2; /* Slightly darker for hover */
+    --border-dark: #3a3a3a; /* Dark border for subtle separation */
+
+    --shadow-light: rgba(0, 0, 0, 0.2); /* Subtle shadow on dark */
+    --shadow-medium: rgba(0, 0, 0, 0.3);
+    --shadow-strong: rgba(0, 0, 0, 0.4);
+
+    --seeking-opportunities-color: #28a745; /* Green for seeking opportunities */
+    --seeking-opportunities-pulse: rgba(40, 167, 69, 0.4); /* Green pulse */
+}
+
+/* --- Basic Reset & Global Styles --- */
 * {
     margin: 0;
     padding: 0;
@@ -6,167 +31,544 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif; /* Using a modern sans-serif font like the example */
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    color: #333; /* Dark gray for text */
-    background-color: #f8f8f8; /* Light background similar to the example */
-    scroll-behavior: smooth; /* Smooth scrolling for navigation links */
+    color: var(--text-light); /* Default body text color */
+    background-color: var(--main-bg-dark); /* Overall dark background for the animation */
+    scroll-behavior: smooth;
+    display: flex; /* This creates the side-by-side layout */
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 a {
-    color: inherit; /* Inherit color from parent */
-    text-decoration: none; /* No underline */
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color);
 }
 
 ul {
-    list-style: none; /* Remove bullet points from lists */
+    list-style: none;
 }
 
-/* Header Styling */
-.header-main {
-    width: 100%;
-    padding: 20px 40px; /* Padding top/bottom and left/right */
-    background-color: #fff; /* White background for header */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
-    position: fixed; /* Fixed at the top */
-    top: 0;
-    left: 0;
-    z-index: 1000; /* Ensure it stays on top */
-}
-
-.header-content {
-    max-width: 1200px; /* Max width for content, similar to example */
-    margin: 0 auto; /* Center the content */
-    display: flex;
-    justify-content: space-between; /* Logo left, Nav right */
-    align-items: center; /* Vertically align items */
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: 700; /* Bold */
-    color: #000; /* Black for logo */
-}
-
-.main-nav ul {
-    display: flex; /* Display nav items in a row */
-    gap: 30px; /* Space between nav items */
-}
-
-.main-nav a {
-    font-size: 16px;
-    font-weight: 500; /* Medium weight */
-    color: #555; /* Slightly lighter gray for nav links */
-    transition: color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.main-nav a:hover {
-    color: #000; /* Darker on hover */
-}
-
-/* Main Content Spacing (to prevent content from being hidden behind fixed header) */
-main {
-    padding-top: 100px; /* Adjust based on header height */
-}
-
-/* Basic Section Styling */
-.section {
-    padding: 80px 40px; /* Generous padding for sections */
-    max-width: 1200px;
+/* --- Layout Containers --- */
+.container {
+    max-width: 1000px;
     margin: 0 auto;
-    min-height: 500px; /* Ensure sections are tall enough for scroll testing */
-    border-bottom: 1px solid #eee; /* Subtle separator between sections */
+    padding: 0 30px;
+}
+
+.section {
+    padding: 80px 0;
+    background-color: var(--primary-bg); /* Dark background for content blocks, slightly lighter than main-bg */
+    border-bottom: 1px solid var(--border-dark); /* Dark border */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-light);
+    overflow: hidden;
 }
 
 .section:last-child {
-    border-bottom: none; /* No border on the last section */
+    border-bottom: none;
+    margin-bottom: 0;
 }
 
-/* Hero Section Styling - Enhanced */
-.hero-section {
-    text-align: center;
-    padding: 150px 40px; /* Generous padding for visual impact */
-    background-color: #fff; /* Clean white background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 100px); /* Make it take up most of the viewport height minus header */
-    border-bottom: 1px solid #eee; /* Subtle bottom border */
+.section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.hero-text-content {
-    max-width: 800px; /* Constrain text width for readability */
-    margin: 0 auto;
-}
-
-.hero-text-content h1 {
-    font-size: 60px; /* Large and bold for primary impact */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-lightest); /* Lightest text for headings */
     font-weight: 700;
-    color: #000;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.8;
     margin-bottom: 15px;
-    line-height: 1.1; /* Tighter line height for large text */
 }
 
-.hero-text-content h2 {
-    font-size: 30px; /* Slightly smaller, impactful sub-headline */
-    font-weight: 500; /* Medium weight */
-    color: #333;
-    margin-bottom: 25px;
+/* --- Left Sidebar Navigation (Sleek Dark) --- */
+.sidebar-nav {
+    width: var(--sidebar-width);
+    min-width: var(--sidebar-width);
+    background-color: var(--sidebar-bg); /* Very dark sidebar background, matching reference */
+    box-shadow: 2px 0 10px var(--shadow-light);
+    position: fixed; /* Ensures it stays on the left */
+    top: 0;
+    left: 0;
+    height: 100vh; /* Full viewport height */
+    padding: 20px 0; /* Adjusted padding for narrower bar */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    z-index: 1000;
+    overflow-y: auto; /* Allows scrolling if menu is very long */
+    border-right: 1px solid var(--border-dark); /* Subtle right border like reference */
 }
 
-.hero-text-content p {
+.sidebar-profile-pic-container {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px var(--shadow-medium);
+    transition: transform 0.3s ease;
+}
+.sidebar-profile-pic-container:hover {
+    transform: scale(1.08);
+}
+.sidebar-profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: var(--accent-color);
+    background-image: url('https://placehold.co/50x50/007bff/ffffff?text=DP'); /* Placeholder */
+    background-size: cover;
+    background-position: center;
+}
+
+.sidebar-menu {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center icons */
+    gap: 10px; /* Space between icons */
+}
+
+.sidebar-menu a {
+    display: flex; /* Use flex for icon + potential text */
+    justify-content: center; /* Center icon */
+    align-items: center;
+    width: 100%; /* Full width for clickable area */
+    padding: 15px 0; /* Generous padding for touch targets */
+    border-radius: 8px; /* Rounded corners for buttons */
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--text-medium); /* Medium light for icons */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative; /* For tooltip positioning */
+}
+
+.sidebar-menu a .ph { /* Styling for Phosphor icons */
+    font-size: 24px; /* Icon size */
+    line-height: 1;
+}
+.sidebar-menu a span { /* Text label for mobile menu */
+    display: none; /* Hidden by default on desktop */
+    margin-left: 10px; /* Space between icon and text */
+}
+
+/* Tooltip for desktop hover */
+.sidebar-menu a[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: calc(var(--sidebar-width) + 10px); /* Position next to sidebar */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background for tooltip */
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000; /* Ensure it's above other content */
+    /* Add a small arrow to the tooltip */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 10% 100%, 0% 50%); /* For left arrow */
+    padding-left: 18px; /* Adjust padding for arrow */
+}
+
+.sidebar-menu a[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    background-color: var(--accent-color);
+    color: var(--secondary-bg); /* White text/icon on accent */
+}
+
+/* --- "Seeking Opportunities" Badge --- */
+.seeking-opportunities-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--seeking-opportunities-color);
+    color: var(--secondary-bg);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    box-shadow: 0 0 0 0 var(--seeking-opportunities-pulse); /* Initial shadow for pulse */
+    animation: pulse-green 2s infinite; /* Pulse animation */
+}
+
+.seeking-opportunities-badge .dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--secondary-bg);
+    border-radius: 50%;
+}
+
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 var(--seeking-opportunities-pulse); }
+    70% { box-shadow: 0 0 0 10px rgba(40, 167, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+}
+
+/* --- Main Content Area --- */
+.main-content-area {
+    margin-left: var(--sidebar-width); /* Pushes content to the right of the fixed sidebar */
+    flex-grow: 1;
+    padding: 30px;
+    position: relative;
+    background-color: transparent; /* Transparent to show Three.js background */
+    overflow-y: auto; /* Enables scrolling for the main content */
+    height: 100vh; /* Ensures it takes full height for scrolling */
+    z-index: 1; /* Ensures content is above the fixed Three.js canvas */
+}
+
+/* --- Profile Picture in Top Right (Removed from here, moved to sidebar) --- */
+.profile-pic-container {
+    display: none; /* Hidden, as it's now in the sidebar */
+}
+
+/* --- Hero Section - Three.js Integration --- */
+.hero-section {
+    text-align: left; /* Align hero content left */
+    padding: 150px 0 100px 0;
+    background-color: transparent;
+    color: var(--text-lightest);
+    min-height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-section .container {
+    z-index: 1;
+    position: relative;
+    max-width: 800px; /* Narrower hero content for chat-like feel */
+    margin-left: 0; /* Align to the left of the main content area */
+}
+
+.hero-section h1 {
+    font-size: 56px; /* Slightly smaller for better fit */
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    color: var(--text-lightest);
+}
+.hero-section h1 span {
+    display: block; /* Break into two lines */
+    font-size: 36px; /* Smaller sub-line */
+    font-weight: 500;
+    color: var(--text-light);
+    margin-top: 10px;
+}
+
+.hero-section p {
     font-size: 20px;
-    color: #555;
-    margin-bottom: 40px; /* Space before buttons */
-    line-height: 1.5;
+    max-width: 600px; /* Narrower paragraph */
+    margin-bottom: 40px;
+    color: var(--text-medium);
+}
+
+/* Three.js Canvas Container - Fixed to the right content area */
+#hero-threejs-container {
+    position: fixed;
+    top: 0;
+    left: var(--sidebar-width);
+    width: calc(100vw - var(--sidebar-width));
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    background-color: var(--main-bg-dark);
+}
+
+/* --- Button Styling (General) --- */
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1;
+    position: relative;
 }
 
 .hero-buttons {
     display: flex;
-    justify-content: center;
-    gap: 20px; /* Space between buttons */
-    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align buttons left in hero */
 }
 
-/* Button Styling (General) */
-.btn {
-    display: inline-block;
-    padding: 15px 30px;
-    border-radius: 8px; /* Slightly rounded corners */
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease; /* Smooth hover effects */
+.hero-buttons .btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--secondary-bg);
 }
 
-.btn-primary {
-    background-color: #000; /* Dark button like the example */
-    color: #fff;
-    border: 2px solid #000;
+.hero-buttons .btn-primary:hover {
+    background-color: var(--accent-hover-color); /* Use new hover color */
+    border-color: var(--accent-hover-color);
 }
 
-.btn-primary:hover {
-    background-color: #333; /* Slightly lighter black on hover */
-    border-color: #333;
+.hero-buttons .btn-secondary {
+    color: var(--text-lightest);
+    border: 2px solid var(--text-lightest);
 }
 
-.btn-secondary {
-    background-color: transparent; /* Transparent button */
-    color: #000;
-    border: 2px solid #ccc; /* Light gray border */
+.hero-buttons .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
 }
 
-.btn-secondary:hover {
-    background-color: #f0f0f0; /* Light background on hover */
-    border-color: #999;
+/* --- About Section --- */
+.about-me-section .section-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
 }
 
-/* Footer Styling */
+.about-me-section h2 {
+    color: var(--text-lightest);
+}
+
+.about-me-section p {
+    color: var(--text-light);
+}
+
+/* --- Projects Section Styling --- */
+.projects-section .section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.projects-section h2 {
+    color: var(--text-lightest);
+}
+
+.project-card {
+    background-color: var(--primary-bg);
+    box-shadow: 0 4px 15px var(--shadow-light);
+}
+
+.project-card h3 {
+    color: var(--text-lightest);
+}
+
+.project-description {
+    color: var(--text-medium);
+}
+
+.project-tech span {
+    background-color: var(--border-dark);
+    color: var(--text-light);
+}
+
+.project-links .btn-secondary {
+    color: var(--text-light);
+    border: 2px solid var(--border-dark);
+}
+.project-links .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+
+/* --- Skills Section --- */
+.skills-section {
+    background-color: var(--primary-bg);
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.skills-grid {
+    margin-top: 40px;
+}
+
+.skill-card {
+    background-color: var(--secondary-bg);
+    box-shadow: 0 4px 15px var(--shadow-light);
+    border: 1px solid transparent;
+}
+
+.skill-card:hover {
+    box-shadow: 0 8px 25px var(--shadow-medium);
+    border-color: var(--accent-color);
+}
+
+.skill-card h3 {
+    color: var(--text-lightest);
+}
+
+.skill-card p {
+    color: var(--text-medium);
+}
+
+.skill-card::before {
+    background-image:
+        linear-gradient(to right, var(--border-dark) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border-dark) 1px, transparent 1px);
+    opacity: 0.1;
+}
+
+.skill-card:hover::before {
+    opacity: 0.2;
+}
+
+/* --- Education Section --- */
+.education-section {
+    background-color: var(--secondary-bg);
+    padding-bottom: 30px;
+}
+
+.timeline::before {
+    background-color: var(--border-dark);
+}
+
+.timeline-item-content {
+    background-color: var(--primary-bg);
+    box-shadow: 0 2px 10px var(--shadow-light);
+    border-left: 3px solid transparent;
+}
+
+.timeline-item-content:hover {
+    border-left-color: var(--accent-color);
+}
+
+.timeline-item:nth-child(even) .timeline-item-content:hover {
+    border-right-color: var(--accent-color);
+}
+
+.timeline-date {
+    background-color: var(--accent-color);
+    color: var(--secondary-bg);
+}
+
+.timeline-item-content h3 {
+    color: var(--text-lightest);
+}
+
+.timeline-item-content h4 {
+    color: var(--text-light);
+}
+
+.timeline-item-content p {
+    color: var(--text-medium);
+}
+
+/* --- Awards Section (New Separate Section) --- */
+.awards-section {
+    background-color: var(--primary-bg);
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.awards-section h2 {
+    color: var(--text-lightest);
+}
+
+.award-card {
+    background-color: var(--secondary-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-light);
+    padding: 30px;
+    text-align: left;
+    margin: 0 auto;
+    max-width: 700px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.award-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.award-card h3 {
+    font-size: 24px;
+    color: var(--text-lightest);
+    margin-bottom: 10px;
+}
+
+.award-card p {
+    font-size: 16px;
+    color: var(--text-medium);
+    line-height: 1.6;
+}
+
+
+/* --- Contact Section --- */
+.contact-section {
+    background-color: var(--primary-bg);
+}
+
+.contact-content p {
+    color: var(--text-light);
+}
+
+.contact-links a {
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.contact-links a:hover {
+    background-color: var(--accent-color);
+    color: var(--secondary-bg);
+    box-shadow: 0 4px 15px var(--shadow-medium);
+}
+
+/* --- 2025 Focus Section --- */
+.focus-2025-section {
+    background-color: var(--secondary-bg);
+}
+
+.focus-2025-section h2 {
+    color: var(--text-lightest);
+}
+
+.focus-2025-section p {
+    color: var(--text-light);
+}
+
+/* --- Footer Styling --- */
 .footer-main {
     width: 100%;
-    padding: 40px;
-    background-color: #1a1a1a; /* Dark background for footer */
-    color: #aaa; /* Light gray text */
+    padding: 40px 0;
+    background-color: var(--main-bg-dark);
+    color: var(--text-medium);
     text-align: center;
     font-size: 14px;
     display: flex;
@@ -174,79 +576,104 @@ main {
     gap: 10px;
     align-items: center;
 }
+.footer-links a { color: var(--text-light); margin: 0 10px; }
+.footer-links a:hover { color: var(--accent-color); }
 
-.footer-links a {
-    color: #fff; /* White links */
-    margin: 0 10px;
-    transition: color 0.3s ease;
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    :root { --sidebar-width: 80px; }
+    .sidebar-profile-pic-container { display: none; }
+    .sidebar-menu { gap: 5px; }
+    .sidebar-menu a { padding: 12px 0; }
+    .main-content-area { margin-left: var(--sidebar-width); }
+    #hero-threejs-container { left: var(--sidebar-width); width: calc(100vw - var(--sidebar-width)); }
 }
 
-.footer-links a:hover {
-    color: #007bff; /* A subtle blue on hover */
-}
-
-/* Responsive adjustments for smaller screens (add to the end of style.css) */
-@media (max-width: 768px) {
-    .header-main {
+@media (max-width: 768px) { /* Mobile layout */
+    body { flex-direction: column; }
+    .sidebar-nav {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-width: unset;
         padding: 15px 20px;
+        box-shadow: 0 2px 10px var(--shadow-light);
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .sidebar-profile-pic-container { display: block; margin-bottom: 0; }
+    /* Hide the main logo on mobile, show profile pic in top bar */
+    .sidebar-logo { display: none; } 
+    .sidebar-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: var(--sidebar-bg);
+        box-shadow: 0 2px 10px var(--shadow-medium);
+        padding: 10px 0;
+        z-index: 999;
+        align-items: flex-start;
+    }
+    .sidebar-menu.is-open { flex-direction: column; }
+    .sidebar-menu ul { flex-direction: column; gap: 5px; }
+    .sidebar-menu a { padding: 10px 20px; justify-content: flex-start; }
+    .sidebar-menu a .ph { margin-right: 10px; }
+    .sidebar-menu a span { display: inline; } /* Show text labels on mobile when menu is open */
+    .sidebar-menu a[data-tooltip]:hover::after { /* Hide tooltip on mobile */
+        display: none;
     }
 
-    .main-nav ul {
-        gap: 15px;
-    }
 
-    .logo {
-        font-size: 20px;
-    }
+    .main-content-area { margin-left: 0; padding-top: 20px; }
+    .profile-pic-container { display: none; }
 
-    .main-nav a {
-        font-size: 14px;
-    }
+    .hero-section { padding: 100px 0 60px 0; min-height: 70vh; text-align: center; }
+    .hero-section .container { margin-left: auto; margin-right: auto; }
+    .hero-section h1 { font-size: 40px; }
+    .hero-section h1 span { font-size: 28px; }
+    .hero-section p { font-size: 18px; }
+    .hero-buttons { justify-content: center; }
 
-    .hero-text-content h1 {
-        font-size: 40px;
-    }
-
-    .hero-text-content h2 {
-        font-size: 24px;
-    }
-
-    .hero-text-content p {
-        font-size: 16px;
-    }
-
-    .btn {
-        padding: 12px 25px;
-        font-size: 16px;
-    }
-
-    .hero-buttons {
-        flex-direction: column; /* Stack buttons on small screens */
-        gap: 10px;
-    }
-
-    .section {
-        padding: 60px 20px;
-    }
-}
-/* About Me Section Styling */
-.about-me-section .section-content {
-    max-width: 900px; /* Constrain text width for better readability */
-    margin: 0 auto; /* Center the content */
-    text-align: left; /* Align text left */
-}
-
-.about-me-section h2 {
-    font-size: 36px;
-    font-weight: 700;
-    color: #000;
-    margin-bottom: 30px;
-    text-align: center; /* Center the heading */
+    h2 { font-size: 30px; }
+    p { font-size: 16px; }
+    .btn { padding: 12px 25px; font-size: 16px; }
+    .hero-buttons { flex-direction: column; gap: 10px; }
+    .projects-grid, .skills-grid { grid-template-columns: 1fr; }
+    .timeline::before { left: 20px; transform: translateX(0); }
+    .timeline-item { flex-direction: column; align-items: flex-start; }
+    .timeline-item-content { width: 100%; margin-left: 0 !important; text-align: left !important; padding: 20px; }
+    .timeline-item:nth-child(even) .timeline-item-content { border-right: none; border-left: 3px solid transparent; }
+    .timeline-date { position: static; transform: none; margin-bottom: 10px; }
+    #hero-threejs-container { left: 0; width: 100vw; height: 100vh; }
 }
 
-.about-me-section p {
-    font-size: 18px;
-    line-height: 1.8; /* More space between lines for readability */
-    color: #444;
-    margin-bottom: 20px; /* Space between paragraphs */
+/* Hamburger menu for mobile */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    z-index: 1002;
 }
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-lightest);
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+}
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 8px; }
+.hamburger span:nth-child(3) { top: 16px; }
+.hamburger.is-active span:nth-child(1) { transform: rotate(45deg); top: 8px; }
+.hamburger.is-active span:nth-child(2) { opacity: 0; }
+.hamburger.is-active span:nth-child(3) { transform: rotate(-45deg); top: 8px; }
+@media (max-width: 768px) { .hamburger { display: block; } }
