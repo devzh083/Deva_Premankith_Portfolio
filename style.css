@@ -82,28 +82,84 @@ main {
     border-bottom: none; /* No border on the last section */
 }
 
-/* Hero Section Basic Styling */
+/* Hero Section Styling - Enhanced */
 .hero-section {
     text-align: center;
-    padding: 150px 40px; /* More padding for hero */
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
+    padding: 150px 40px; /* Generous padding for visual impact */
+    background-color: #fff; /* Clean white background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px); /* Make it take up most of the viewport height minus header */
+    border-bottom: 1px solid #eee; /* Subtle bottom border */
 }
 
-.hero-section h1 {
-    font-size: 48px;
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: #000;
-}
-
-.hero-section p {
-    font-size: 20px;
-    color: #555;
-    max-width: 600px;
+.hero-text-content {
+    max-width: 800px; /* Constrain text width for readability */
     margin: 0 auto;
 }
 
+.hero-text-content h1 {
+    font-size: 60px; /* Large and bold for primary impact */
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 15px;
+    line-height: 1.1; /* Tighter line height for large text */
+}
+
+.hero-text-content h2 {
+    font-size: 30px; /* Slightly smaller, impactful sub-headline */
+    font-weight: 500; /* Medium weight */
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.hero-text-content p {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 40px; /* Space before buttons */
+    line-height: 1.5;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+/* Button Styling (General) */
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 8px; /* Slightly rounded corners */
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth hover effects */
+}
+
+.btn-primary {
+    background-color: #000; /* Dark button like the example */
+    color: #fff;
+    border: 2px solid #000;
+}
+
+.btn-primary:hover {
+    background-color: #333; /* Slightly lighter black on hover */
+    border-color: #333;
+}
+
+.btn-secondary {
+    background-color: transparent; /* Transparent button */
+    color: #000;
+    border: 2px solid #ccc; /* Light gray border */
+}
+
+.btn-secondary:hover {
+    background-color: #f0f0f0; /* Light background on hover */
+    border-color: #999;
+}
 
 /* Footer Styling */
 .footer-main {
@@ -127,4 +183,49 @@ main {
 
 .footer-links a:hover {
     color: #007bff; /* A subtle blue on hover */
+}
+
+/* Responsive adjustments for smaller screens (add to the end of style.css) */
+@media (max-width: 768px) {
+    .header-main {
+        padding: 15px 20px;
+    }
+
+    .main-nav ul {
+        gap: 15px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .main-nav a {
+        font-size: 14px;
+    }
+
+    .hero-text-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-text-content h2 {
+        font-size: 24px;
+    }
+
+    .hero-text-content p {
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        flex-direction: column; /* Stack buttons on small screens */
+        gap: 10px;
+    }
+
+    .section {
+        padding: 60px 20px;
+    }
 }
