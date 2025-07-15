@@ -1,0 +1,130 @@
+/* Basic Reset & Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif; /* Using a modern sans-serif font like the example */
+    line-height: 1.6;
+    color: #333; /* Dark gray for text */
+    background-color: #f8f8f8; /* Light background similar to the example */
+    scroll-behavior: smooth; /* Smooth scrolling for navigation links */
+}
+
+a {
+    color: inherit; /* Inherit color from parent */
+    text-decoration: none; /* No underline */
+}
+
+ul {
+    list-style: none; /* Remove bullet points from lists */
+}
+
+/* Header Styling */
+.header-main {
+    width: 100%;
+    padding: 20px 40px; /* Padding top/bottom and left/right */
+    background-color: #fff; /* White background for header */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    position: fixed; /* Fixed at the top */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.header-content {
+    max-width: 1200px; /* Max width for content, similar to example */
+    margin: 0 auto; /* Center the content */
+    display: flex;
+    justify-content: space-between; /* Logo left, Nav right */
+    align-items: center; /* Vertically align items */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700; /* Bold */
+    color: #000; /* Black for logo */
+}
+
+.main-nav ul {
+    display: flex; /* Display nav items in a row */
+    gap: 30px; /* Space between nav items */
+}
+
+.main-nav a {
+    font-size: 16px;
+    font-weight: 500; /* Medium weight */
+    color: #555; /* Slightly lighter gray for nav links */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.main-nav a:hover {
+    color: #000; /* Darker on hover */
+}
+
+/* Main Content Spacing (to prevent content from being hidden behind fixed header) */
+main {
+    padding-top: 100px; /* Adjust based on header height */
+}
+
+/* Basic Section Styling */
+.section {
+    padding: 80px 40px; /* Generous padding for sections */
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 500px; /* Ensure sections are tall enough for scroll testing */
+    border-bottom: 1px solid #eee; /* Subtle separator between sections */
+}
+
+.section:last-child {
+    border-bottom: none; /* No border on the last section */
+}
+
+/* Hero Section Basic Styling */
+.hero-section {
+    text-align: center;
+    padding: 150px 40px; /* More padding for hero */
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.hero-section h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #000;
+}
+
+.hero-section p {
+    font-size: 20px;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+/* Footer Styling */
+.footer-main {
+    width: 100%;
+    padding: 40px;
+    background-color: #1a1a1a; /* Dark background for footer */
+    color: #aaa; /* Light gray text */
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.footer-links a {
+    color: #fff; /* White links */
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #007bff; /* A subtle blue on hover */
+}
