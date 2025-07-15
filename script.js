@@ -11,6 +11,11 @@ function initThreeJS() {
         return;
     }
 
+    // Set container dimensions before initializing Three.js
+    // This is crucial for Three.js to render correctly
+    container.style.width = '100%';
+    container.style.height = '100%';
+
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 1, 10000);
     camera.position.z = 1000;
@@ -82,7 +87,7 @@ function initThreeJS() {
 
     document.addEventListener('mousemove', onDocumentMouseMove, false);
     window.addEventListener('resize', onWindowResize, false);
-    onWindowResize();
+    onWindowResize(); // Initial call to set dimensions
 }
 
 function onDocumentMouseMove(event) {
