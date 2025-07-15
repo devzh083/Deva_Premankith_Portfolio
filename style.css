@@ -229,3 +229,24 @@ main {
         padding: 60px 20px;
     }
 }
+/* About Me Section Styling */
+.about-me-section .section-content {
+    max-width: 900px; /* Constrain text width for better readability */
+    margin: 0 auto; /* Center the content */
+    text-align: left; /* Align text left */
+}
+
+.about-me-section h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 30px;
+    text-align: center; /* Center the heading */
+}
+
+.about-me-section p {
+    font-size: 18px;
+    line-height: 1.8; /* More space between lines for readability */
+    color: #444;
+    margin-bottom: 20px; /* Space between paragraphs */
+}
